@@ -6,8 +6,6 @@
 [![YOLOv3](https://img.shields.io/badge/YOLO-v3-darkgreen)](https://pjreddie.com/darknet/yolo/)
 
 > 🌟 Real-time coal truck detection system powered by YOLOv3, optimized for mining operations.
-> ![image](https://github.com/user-attachments/assets/eef5ef17-5e02-4389-954e-e5ac6c39698c)
-
 
 ## 📖 Table of Contents
 - [Overview](#overview)
