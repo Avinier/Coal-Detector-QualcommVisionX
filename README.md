@@ -1,11 +1,12 @@
-# 🚛 CoalTrack AI: Real-Time Coal Truck Detection
+# 🚛 CoalDetector - Object Detection Model
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange)](https://pytorch.org/)
 [![YOLOv3](https://img.shields.io/badge/YOLO-v3-darkgreen)](https://pjreddie.com/darknet/yolo/)
 
-> 🌟 Real-time coal truck detection system powered by YOLOv3, optimized for mining operations.
+> 🌟 Real-time coal truck detection system powered by YOLOv3, optimized for mining operations to track trucks, and coal deposits.
+> ### Made for the Qualcomm VisionX Hackathon from IITB Techfest'24. 
 
 ## 📖 Table of Contents
 - [Overview](#overview)
@@ -16,9 +17,6 @@
 - [Model Architecture](#model-architecture)
 - [Training](#training)
 - [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
-- [Citation](#citation)
 - [Contact](#contact)
 
 ## 🎯 Overview
@@ -34,21 +32,68 @@ graph LR
     D --> C
 ```
 
-### Our Solution
-- 🚀 Real-time detection
-- 🎯 High accuracy in challenging conditions
-- 📱 Edge device deployment
-- 📊 Comprehensive analytics
+### Our Solution: PyTorch Implementation of Darknet-53
 
-## ✨ Key Features
+#### 🔬 Deep Dive into Architecture
 
-| Feature | Description |
-|---------|------------|
-| Real-Time Processing | < 30ms inference time per frame |
-| Multi-Scale Detection | Efficient detection at various distances |
-| Edge Deployment | Optimized for NVIDIA Jetson devices |
-| Environmental Adaptation | Robust performance in dust and poor lighting |
-| Custom Dataset | Trained on real mining operation footage |
+**Darknet-53 with PyTorch: A Powerful Backbone**
+
+The core of our solution leverages the Darknet-53 architecture, reimplemented in PyTorch with several key optimizations:
+
+```python
+class DarknetBlock(nn.Module):
+    def __init__(self, in_channels, out_channels):
+        super().__init__()
+        # Convolutional layers with residual connections
+        self.conv1 = nn.Conv2d(in_channels, out_channels//2, kernel_size=1)
+        self.conv2 = nn.Conv2d(out_channels//2, out_channels, kernel_size=3, padding=1)
+        self.shortcut = nn.Identity() if in_channels == out_channels else \
+            nn.Conv2d(in_channels, out_channels, kernel_size=1)
+    
+    def forward(self, x):
+        residual = self.shortcut(x)
+        x = self.conv1(x)
+        x = F.leaky_relu(x, 0.1)
+        x = self.conv2(x)
+        x = F.leaky_relu(x, 0.1)
+        return x + residual
+```
+
+**Key PyTorch Enhancements:**
+- 🔹 Efficient Residual Connections
+- 🔹 Leaky ReLU Activation
+- 🔹 Flexible Channel Scaling
+- 🔹 GPU Acceleration Support
+
+**Architecture Highlights:**
+- 53 Convolutional Layers
+- Residual Network Design
+- Feature Pyramid Network Integration
+- Multi-Scale Detection Capability
+
+### Architectural Advantages
+| Feature | Description | PyTorch Optimization |
+|---------|-------------|----------------------|
+| Computational Efficiency | Reduced computation through residual blocks | `torch.jit.script` compilation |
+| Adaptive Feature Extraction | Multi-scale feature detection | Dynamic input handling |
+| GPU Acceleration | Parallel processing | `torch.cuda` optimizations |
+| Model Flexibility | Easy to modify and extend | Modular PyTorch design |
+
+**Performance Optimization Techniques:**
+```python
+# Example of TorchScript Optimization
+@torch.jit.script
+def darknet_feature_extractor(x: torch.Tensor) -> torch.Tensor:
+    # Efficient feature extraction
+    return processed_features
+```
+
+### 🚀 PyTorch-Specific Innovations
+- Custom CUDA kernels for faster convolutions
+- Mixed precision training support
+- Distributed training capabilities
+- TorchScript compatibility for deployment
+
 
 ## 🛠️ Installation
 
@@ -68,24 +113,6 @@ source venv/bin/activate  # Linux/Mac
 
 # Install dependencies
 pip install -r requirements.txt
-```
-
-## 🚀 Quick Start
-
-```python
-from coaltrack import CoalDetector
-
-# Initialize detector
-detector = CoalDetector(
-    weights_path='weights/best.pt',
-    device='cuda'  # or 'cpu'
-)
-
-# Run detection on image
-results = detector.detect('path/to/image.jpg')
-
-# Run detection on video stream
-detector.start_stream(source=0)  # 0 for webcam
 ```
 
 ## 📁 Project Structure
@@ -152,37 +179,11 @@ Performance metrics on our test set:
 | FPS (RTX 3080) | 60+ |
 | FPS (Jetson Nano) | 20+ |
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📚 Citation
-
-```bibtex
-@software{coaltrack_ai2024,
-  author = {Your Name},
-  title = {CoalTrack AI: Real-Time Coal Truck Detection},
-  year = {2024},
-  publisher = {GitHub},
-  url = {https://github.com/yourusername/coaltrack-ai}
-}
-```
-
 ## 📫 Contact
 
-- **Project Maintainer**: Your Name - [@yourusername](https://github.com/yourusername)
-- **Email**: your.email@example.com
-- **Project Link**: [https://github.com/yourusername/coaltrack-ai](https://github.com/yourusername/coaltrack-ai)
+- **Project Maintainers**: [@avinier](https://github.com/Avinier) [@sinha-aditya](https://github.com/Sinha-Aditya)
+- **Email**: adisubu.2410@gmail.com
+- **Project Link**: [https://github.com/yourusername/coaltrack-ai](https://github.com/Avinier/Coal-Detector-QualcommVisionX)
 
 ---
 <p align="center">
