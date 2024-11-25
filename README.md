@@ -9,6 +9,7 @@
 > ### Made for the Qualcomm VisionX Hackathon from IITB Techfest'24. 
 
 ## 📖 Table of Contents
+- [TODO](#todo)
 - [Overview](#overview)
 - [Key Features](#key-features)
 - [Installation](#installation)
@@ -18,6 +19,12 @@
 - [Training](#training)
 - [Results](#results)
 - [Contact](#contact)
+
+## 📃 TODO
+
+[] Annotating full data and making dataset public on kaggle.
+[] Test-runs for the model
+[] Uploading results
 
 ## 🎯 Overview
 
