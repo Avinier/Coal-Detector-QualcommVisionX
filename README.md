@@ -118,8 +118,8 @@ pip install -r requirements.txt
 ## 📁 Project Structure
 
 ```
-coaltrack-ai/
-├── coaltrack/
+Coal-Detector/
+├── code/
 │   ├── __init__.py
 │   ├── models/
 │   │   ├── darknet.py
