@@ -9,16 +9,16 @@
 > ### Made for the Qualcomm VisionX Hackathon from IITB Techfest'24. 
 
 ## 📖 Table of Contents
-- [TODO](#todo)
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Project Structure](#project-structure)
-- [Model Architecture](#model-architecture)
-- [Training](#training)
-- [Results](#results)
-- [Contact](#contact)
+- [TODO](#-todo)
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [Project Structure](#-project-structure)
+- [Model Architecture](#-model-architecture)
+- [Training](#-training)
+- [Results](#-results)
+- [Contact](#-contact)
 
 ## 📃 TODO
 
