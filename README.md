@@ -22,9 +22,10 @@
 
 ## 📃 TODO
 
-[] Annotating full data and making dataset public on kaggle.
-[] Test-runs for the model
-[] Uploading results
+- [ ] Annotating full data and making dataset public on kaggle.
+- [ ] Test-runs for the model
+- [ ] Uploading results
+- [x] Main prototype training 
 
 ## 🎯 Overview
 
